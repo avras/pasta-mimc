@@ -22,7 +22,7 @@ from Crypto.Hash import keccak
 
 
 # For MiMC over the Pallas curve, we use the same constant generation algorithm with 
-# prime value equal to the order of the Pallas curve group. The number of round constants
+# prime value equal to the order of the underlying field. The number of round constants
 # is 110.
 #
 # Pallas curve: y^2 = x^3 + 5  over GF(0x40000000000000000000000000000000224698fc094cf91b992d30ed00000001)
