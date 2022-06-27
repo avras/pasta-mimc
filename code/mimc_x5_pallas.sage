@@ -146,8 +146,8 @@ def mimc5(input_value):
 
 
 def main(args):
-    if (len(sys.argv) > 1):
-        input_value = F(sys.argv[1])
+    if (len(args) > 0):
+        input_value = F(args[0])
     else:
         input_value = F(1)
 
