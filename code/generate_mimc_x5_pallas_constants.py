@@ -1,4 +1,3 @@
-from numpy import zeros
 from sage.all import *
 from Crypto.Hash import keccak
 
