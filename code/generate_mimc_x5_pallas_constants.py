@@ -29,25 +29,48 @@ from Crypto.Hash import keccak
 # More info: https://electriccoin.co/blog/the-pasta-curves-for-halo-2-and-beyond/
 
 prime = 0x40000000000000000000000000000000224698fc094cf91b992d30ed00000001
-num_rounds = ceil(log(prime,2)/log(5,2))
-print('Number of rounds =', num_rounds)
+n = len(format(prime, 'b'))
 
-F = GF(prime)
-round_constants = [F(0)]
+# The print_hex and print_words_to_hex functions are from https://github.com/daira/pasta-hadeshash
+def print_hex(c, last, rust=False):
+    c = int(c)
+    if rust:
+        print("    pallas::Base::from_raw([")
+        for i in range(0, n, 64):
+            print("        0x%04x_%04x_%04x_%04x," % tuple([(c >> j) & 0xFFFF for j in range(i+48, i-1, -16)]))
+        print("    ]),")
+    else:
+        hex_length = (n + 3)//4 + 2 # +2 for "0x"
+        print("    {0:#0{1}x}".format(c, hex_length), end="\n" if last else ",\n")
 
-seed_value = b'mimc';
-keccak_hash = keccak.new(data=seed_value, digest_bits=256)
-hash_val = keccak_hash.digest()
+def print_words_to_hex(M, rust=False):
+    print("[", end="\n")
+    for (i, entry) in enumerate(M):
+        print_hex(entry, i == len(M)-1, rust=rust)
+    print("];" if rust else "]")
 
-for i in range(1,num_rounds):
-    keccak_hash = keccak.new(data=hash_val, digest_bits=256)
+def main(args):
+    num_rounds = ceil(log(prime,2)/log(5,2))
+
+    F = GF(prime)
+    round_constants = [F(0)]
+
+    seed_value = b'mimc';
+    keccak_hash = keccak.new(data=seed_value, digest_bits=256)
     hash_val = keccak_hash.digest()
-    hash_val_in_hex = keccak_hash.hexdigest()
 
-    field_element = F('0x'+hash_val_in_hex)
-    round_constants.append(field_element)
+    for i in range(1,num_rounds):
+        keccak_hash = keccak.new(data=hash_val, digest_bits=256)
+        hash_val = keccak_hash.digest()
+        hash_val_in_hex = keccak_hash.hexdigest()
 
-print ('round_constants = [')
-for i in range(num_rounds):
-    print('   ', hex(round_constants[i])+',')
-print(']')
+        field_element = F('0x'+hash_val_in_hex)
+        round_constants.append(field_element)
+
+    rust = '--rust' in args
+
+    print_words_to_hex(round_constants, rust=rust)
+
+if __name__ == "__main__":
+    import sys
+    main(sys.argv[1:])
