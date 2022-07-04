@@ -136,22 +136,25 @@ round_constants = [
 ]
 
 
-def mimc5(input_value):
+def mimc5(input_value, secret_key):
     state_value = input_value
 
     for r in range(num_rounds):
-            state_value = (state_value + round_constants[r])^5
-    return state_value
+            state_value = (state_value + secret_key + round_constants[r])^5
+    return state_value + secret_key
 
 
 
 def main(args):
+    secret_key = F(0) # Zero secret key gives MiMC hash function
+    input_value = F(0)
     if (len(args) > 0):
         input_value = F(args[0])
-    else:
-        input_value = F(1)
+    if (len(args) > 1):
+        secret_key = F(args[1])
 
-    hash_value = mimc5(input_value)
+    print(input_value, secret_key)
+    hash_value = mimc5(input_value, secret_key)
 
     print("Input:", hex(input_value))
     print("Output:", hex(hash_value))
