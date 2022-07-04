@@ -4,9 +4,8 @@
 # The order of the Pallas group is 0x40000000000000000000000000000000224698fc0994a8dd8c46eb2100000001
 # More info: https://electriccoin.co/blog/the-pasta-curves-for-halo-2-and-beyond/
 
-num_rounds = 110
+num_rounds = 220
 prime = 0x40000000000000000000000000000000224698fc094cf91b992d30ed00000001
-n = len(format(prime, 'b'))
 F = GF(prime)
 
 # As per Section 5.1 of https://eprint.iacr.org/2016/492.pdf, the
@@ -240,29 +239,30 @@ round_constants = [
 
 # Implementation below follows the one in circomlibjs
 # https://github.com/iden3/circomlibjs/blob/2e18e63b75e4eeffe1d54c95b2e71ee5a8709af9/src/mimcsponge.js#L44
-def mimc5_sponge(xL, xR):
-    # Round 1
-    xL, xR = xR + xL^5, xL     # round_constants[0] = 0
+def mimc5_sponge(xL, xR, secret_key):
+    # Round 1 to num_rounds-1
+    for r in range(num_rounds-1):
+        xL, xR = xR + (xL + secret_key + round_constants[r])^5, xL
 
-    # Round 2 to num_rounds-1
-    for r in range(1, num_rounds-1):
-        xL, xR = xR + (xL+round_constants[r])^5, xL
-
-    # Last round
-    xR = xR + xL^5      # round_constants[-1] = 0 AND xL is unchanged
+    # Last round has no swap and round constant is zero
+    xR = xR + (xL + secret_key)^5
     return (xL, xR)
 
 
 
 def main(args):
-    if (len(args) > 1):
+    secret_key = F(0) # Zero secret key gives MiMC-Feistel hash function
+    xL = F(0)
+    xR = F(0)
+    if (len(args) > 0):
         xL = F(args[0])
+    if (len(args) > 1):
         xR = F(args[1])
-    else:
-        xL = F(1)
-        xR = F(2)
+    if (len(args) > 2):
+        secret_key = F(args[2])
 
-    xL_out, xR_out = mimc5_sponge(xL, xR)
+
+    xL_out, xR_out = mimc5_sponge(xL, xR, secret_key)
 
     print("Inputs:", hex(xL), hex(xR))
     print("Outputs:", hex(xL_out), hex(xR_out))
