@@ -20,7 +20,7 @@ F = GF(prime)
 # For the Pallas curve with s=5, this is 110. 
 # By convention, the first round constant is 0.
 # For the algorithm used to generate the other constants, see
-# the file generate_mimc_x5_constants.py in this repository.
+# the file generate_mimc_x5_pallas_constants.py in this repository.
 
 round_constants = [
     0x0,
@@ -157,6 +157,7 @@ def main(args):
     hash_value = mimc5(input_value, secret_key)
 
     print("Input:", hex(input_value))
+    print("Key:", hex(secret_key))
     print("Output:", hex(hash_value))
 
 if __name__ == "__main__":
