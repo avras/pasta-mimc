@@ -160,7 +160,6 @@ def main(args):
     if (len(args) > 1):
         secret_key = F(args[1])
 
-    print(input_value, secret_key)
     output_value = mimc5(input_value, secret_key)
 
     print("Input:", hex(input_value))
