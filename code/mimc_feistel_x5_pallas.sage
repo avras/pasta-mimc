@@ -6,6 +6,7 @@
 
 num_rounds = 220
 prime = 0x40000000000000000000000000000000224698fc094cf91b992d30ed00000001
+n = len(format(prime, 'b'))
 F = GF(prime)
 
 # As per Section 5.1 of https://eprint.iacr.org/2016/492.pdf, the
@@ -248,7 +249,13 @@ def mimc5_sponge(xL, xR, secret_key):
     xR = xR + (xL + secret_key)^5
     return (xL, xR)
 
-
+# The print_hex function is modification of the one from https://github.com/daira/pasta-hadeshash
+def print_hex(c):
+    c = int(c)
+    print("pallas::Base::from_raw([")
+    for i in range(0, n, 64):
+        print("    0x%04x_%04x_%04x_%04x," % tuple([(c >> j) & 0xFFFF for j in range(i+48, i-1, -16)]))
+    print("])\n")
 
 def main(args):
     secret_key = F(0) # Zero secret key gives MiMC-Feistel hash function
@@ -265,7 +272,13 @@ def main(args):
     xL_out, xR_out = mimc5_sponge(xL, xR, secret_key)
 
     print("Inputs:", hex(xL), hex(xR))
+    print_hex(xL)
+    print_hex(xR)
+    print("Key:", hex(secret_key))
+    print_hex(secret_key)
     print("Outputs:", hex(xL_out), hex(xR_out))
+    print_hex(xL_out)
+    print_hex(xR_out)
 
 if __name__ == "__main__":
     import sys
