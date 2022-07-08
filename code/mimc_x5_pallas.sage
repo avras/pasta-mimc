@@ -143,7 +143,13 @@ def mimc5(input_value, secret_key):
             state_value = (state_value + secret_key + round_constants[r])^5
     return state_value + secret_key
 
-
+# The print_hex function is modification of the one from https://github.com/daira/pasta-hadeshash
+def print_hex(c):
+    c = int(c)
+    print("pallas::Base::from_raw([")
+    for i in range(0, n, 64):
+        print("    0x%04x_%04x_%04x_%04x," % tuple([(c >> j) & 0xFFFF for j in range(i+48, i-1, -16)]))
+    print("])\n")
 
 def main(args):
     secret_key = F(0) # Zero secret key gives MiMC hash function
@@ -154,11 +160,14 @@ def main(args):
         secret_key = F(args[1])
 
     print(input_value, secret_key)
-    hash_value = mimc5(input_value, secret_key)
+    output_value = mimc5(input_value, secret_key)
 
     print("Input:", hex(input_value))
+    print_hex(input_value)
     print("Key:", hex(secret_key))
-    print("Output:", hex(hash_value))
+    print_hex(secret_key)
+    print("Output:", hex(output_value))
+    print_hex(output_value)
 
 if __name__ == "__main__":
     import sys

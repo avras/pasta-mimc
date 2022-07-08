@@ -1,0 +1,101 @@
+// sage mimc_x5_pallas.sage 1 0
+
+Input: 0x1
+pallas::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x0
+pallas::Base::from_raw([
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Output: 0xdbf6bb367a6b1aa83949bc20824559a03ebdcc8c1c992aef1b6b542248d7935
+pallas::Base::from_raw([
+    0xf1b6_b542_248d_7935,
+    0x03eb_dcc8_c1c9_92ae,
+    0x8394_9bc2_0824_559a,
+    0x0dbf_6bb3_67a6_b1aa,
+])
+
+// sage mimc_x5_vesta.sage 1 0
+Input: 0x1
+vesta::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x0
+vesta::Base::from_raw([
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Output: 0x3465eae0fdd1272c96e1b2e47bd86951dc2a13c62853b6442f6241c430c00c1e
+vesta::Base::from_raw([
+    0x2f62_41c4_30c0_0c1e,
+    0xdc2a_13c6_2853_b644,
+    0x96e1_b2e4_7bd8_6951,
+    0x3465_eae0_fdd1_272c,
+])
+
+// sage mimc_x5_pallas.sage 1 2
+Input: 0x1
+pallas::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x2
+pallas::Base::from_raw([
+    0x0000_0000_0000_0002,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Output: 0x13a13ee38180ed5c16f8c2f123c2eb57f0c35ee397a57b7c8bf693caffae5056
+pallas::Base::from_raw([
+    0x8bf6_93ca_ffae_5056,
+    0xf0c3_5ee3_97a5_7b7c,
+    0x16f8_c2f1_23c2_eb57,
+    0x13a1_3ee3_8180_ed5c,
+])
+
+// sage mimc_x5_vesta.sage 1 2
+Input: 0x1
+vesta::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x2
+vesta::Base::from_raw([
+    0x0000_0000_0000_0002,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Output: 0x2cc42ee2f700bd4354b17a7a4b55250951e682df2b863e68d0e9a4b08586fdf1
+vesta::Base::from_raw([
+    0xd0e9_a4b0_8586_fdf1,
+    0x51e6_82df_2b86_3e68,
+    0x54b1_7a7a_4b55_2509,
+    0x2cc4_2ee2_f700_bd43,
+])
+
