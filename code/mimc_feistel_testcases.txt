@@ -1,0 +1,156 @@
+// sage mimc_feistel_x5_pallas.sage 1 2 0
+Inputs: 0x1 0x2
+pallas::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+pallas::Base::from_raw([
+    0x0000_0000_0000_0002,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x0
+pallas::Base::from_raw([
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Outputs: 0x3dcf0833bf9ad066502ef77c51dc8172c49518f714700b8d22d10a2d8515cc2d 0x911f7db0997f9d77922bc44bb42d4e9d5dd1d42ebff40f072da1f9671a3f1b1
+pallas::Base::from_raw([
+    0x22d1_0a2d_8515_cc2d,
+    0xc495_18f7_1470_0b8d,
+    0x502e_f77c_51dc_8172,
+    0x3dcf_0833_bf9a_d066,
+])
+
+pallas::Base::from_raw([
+    0x72da_1f96_71a3_f1b1,
+    0xd5dd_1d42_ebff_40f0,
+    0x7922_bc44_bb42_d4e9,
+    0x0911_f7db_0997_f9d7,
+])
+
+// sage mimc_feistel_x5_vesta.sage 1 2 0
+Inputs: 0x1 0x2
+vesta::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+vesta::Base::from_raw([
+    0x0000_0000_0000_0002,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x0
+vesta::Base::from_raw([
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Outputs: 0x31e1826e8ba5ceea10824fa40eea3d54165ade148b6d1abe218bc18ed0d89468 0xf621ce4da3d9c6427cf83aed4c012289148fc972d6329625a818c0683c47b91
+vesta::Base::from_raw([
+    0x218b_c18e_d0d8_9468,
+    0x165a_de14_8b6d_1abe,
+    0x1082_4fa4_0eea_3d54,
+    0x31e1_826e_8ba5_ceea,
+])
+
+vesta::Base::from_raw([
+    0x5a81_8c06_83c4_7b91,
+    0x9148_fc97_2d63_2962,
+    0x27cf_83ae_d4c0_1228,
+    0x0f62_1ce4_da3d_9c64,
+])
+
+// sage mimc_feistel_x5_pallas.sage 1 2 3
+Inputs: 0x1 0x2
+pallas::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+pallas::Base::from_raw([
+    0x0000_0000_0000_0002,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x3
+pallas::Base::from_raw([
+    0x0000_0000_0000_0003,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Outputs: 0x10c2b3e11d36a3ed047d752bf60393a7a181bef77cdb64f37092dffad96ec69a 0xe79a2cc62eb94741529939551cf4d8d691265409021b6931bbb1d8c5f52a4da
+pallas::Base::from_raw([
+    0x7092_dffa_d96e_c69a,
+    0xa181_bef7_7cdb_64f3,
+    0x047d_752b_f603_93a7,
+    0x10c2_b3e1_1d36_a3ed,
+])
+
+pallas::Base::from_raw([
+    0x1bbb_1d8c_5f52_a4da,
+    0x6912_6540_9021_b693,
+    0x1529_9395_51cf_4d8d,
+    0x0e79_a2cc_62eb_9474,
+])
+
+// sage mimc_feistel_x5_vesta.sage 1 2 3
+Inputs: 0x1 0x2
+vesta::Base::from_raw([
+    0x0000_0000_0000_0001,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+vesta::Base::from_raw([
+    0x0000_0000_0000_0002,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Key: 0x3
+vesta::Base::from_raw([
+    0x0000_0000_0000_0003,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+    0x0000_0000_0000_0000,
+])
+
+Outputs: 0x25862394281ca3bfed707cd2e6bf8ca7b0cf5ea888616b295f96897d7e9aba1 0x1ac1e44f18d5bfd9eda6d152c447c15ce209de81fa45b47927bbf0cc5fca1117
+vesta::Base::from_raw([
+    0x95f9_6897_d7e9_aba1,
+    0x7b0c_f5ea_8886_16b2,
+    0xfed7_07cd_2e6b_f8ca,
+    0x0258_6239_4281_ca3b,
+])
+
+vesta::Base::from_raw([
+    0x27bb_f0cc_5fca_1117,
+    0xe209_de81_fa45_b479,
+    0xeda6_d152_c447_c15c,
+    0x1ac1_e44f_18d5_bfd9,
+])
+
